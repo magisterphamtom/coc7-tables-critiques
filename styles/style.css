@@ -1,0 +1,23 @@
+/* Carte de conséquence : reprend le thème choisi dans « CoC7 – Cartes de chat thématiques » (variables --c7cc-*). */
+.ctc-card {
+  background: var(--c7cc-bg, #f4ecd9);
+  color: var(--c7cc-ink, #2b1d0e);
+  border: 1px solid var(--c7cc-border, #8a6f33);
+  border-left-width: 5px;
+  border-radius: var(--c7cc-radius, 4px);
+  padding: 8px 10px;
+  font-family: var(--c7cc-font-body, Georgia, serif);
+}
+.ctc-card.ctc-critique { border-left-color: #3f8a4a; }
+.ctc-card.ctc-maladresse { border-left-color: #a42a2a; }
+.ctc-card header { display: flex; align-items: center; gap: 6px; font-family: var(--c7cc-font-title, Georgia, serif); font-size: 1.05rem; font-weight: 700; color: var(--c7cc-accent, #7a1f1f); text-transform: uppercase; letter-spacing: .03em; }
+.ctc-card.ctc-critique header i { color: #3f8a4a; }
+.ctc-card.ctc-maladresse header i { color: #a42a2a; }
+.ctc-card .ctc-meta { font-size: .8rem; opacity: .75; margin: 2px 0 6px; }
+.ctc-card .ctc-texte { margin: 0; font-size: 1rem; line-height: 1.4; }
+
+.ctc-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.ctc-btn, .ctc-retirer { width: auto; flex: 1 1 auto; min-height: 26px; line-height: 1; padding: 4px 8px; cursor: pointer; }
+.ctc-btn-critique { border-color: #3f8a4a; }
+.ctc-btn-maladresse { border-color: #a42a2a; }
+.ctc-retirer { margin-top: 6px; }

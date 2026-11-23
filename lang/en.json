@@ -1,0 +1,17 @@
+{
+  "CTC.settings.auto.name": "Automatic draw",
+  "CTC.settings.auto.hint": "Off: the Keeper clicks the button on the roll card when the consequence fits the scene. On: the draw happens by itself on every critical success or fumble.",
+  "CTC.settings.visibilite.name": "Who sees the consequence",
+  "CTC.settings.visibilite.hint": "Everyone, or the Keeper only (to prepare or adapt the consequence before narrating it).",
+  "CTC.settings.visibilite.public": "Everyone",
+  "CTC.settings.visibilite.mj": "Keeper only",
+  "CTC.bouton.critique": "Critical success consequence",
+  "CTC.bouton.maladresse": "Fumble consequence",
+  "CTC.titre.critique": "Critical success",
+  "CTC.titre.maladresse": "Fumble",
+  "CTC.retirer": "Redraw",
+  "CTC.speaker": "Consequence",
+  "CTC.tablesCreees": "{n} consequence tables created in the “Critiques et maladresses” folder.",
+  "CTC.err.tables": "Could not create the consequence tables (see the F12 console).",
+  "CTC.err.tirage": "Draw failed (see the F12 console)."
+}

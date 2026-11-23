@@ -1,0 +1,17 @@
+{
+  "CTC.settings.auto.name": "Tirage automatique",
+  "CTC.settings.auto.hint": "Désactivé : le Gardien clique sur le bouton de la carte du jet quand la conséquence colle à la scène. Activé : le tirage se fait tout seul à chaque réussite critique ou maladresse.",
+  "CTC.settings.visibilite.name": "Qui voit la conséquence",
+  "CTC.settings.visibilite.hint": "Tout le monde, ou le Gardien seul (pour préparer ou adapter la conséquence avant de la raconter).",
+  "CTC.settings.visibilite.public": "Tout le monde",
+  "CTC.settings.visibilite.mj": "Le Gardien seulement",
+  "CTC.bouton.critique": "Conséquence de la réussite critique",
+  "CTC.bouton.maladresse": "Conséquence de la maladresse",
+  "CTC.titre.critique": "Réussite critique",
+  "CTC.titre.maladresse": "Maladresse",
+  "CTC.retirer": "Retirer",
+  "CTC.speaker": "Conséquence",
+  "CTC.tablesCreees": "{n} tables de conséquences créées dans le dossier « Critiques et maladresses ».",
+  "CTC.err.tables": "Impossible de créer les tables de conséquences (voir la console F12).",
+  "CTC.err.tirage": "Tirage impossible (voir la console F12)."
+}
