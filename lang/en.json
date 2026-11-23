@@ -13,5 +13,13 @@
   "CTC.speaker": "Consequence",
   "CTC.tablesCreees": "{n} consequence tables created in the “Critiques et maladresses” folder.",
   "CTC.err.tables": "Could not create the consequence tables (see the F12 console).",
-  "CTC.err.tirage": "Draw failed (see the F12 console)."
+  "CTC.err.tirage": "Draw failed (see the F12 console).",
+  "CTC.settings.test.name": "Test without rolling",
+  "CTC.settings.test.label": "Open the test window",
+  "CTC.settings.test.hint": "Pick a skill and a result type: the consequence card appears in the chat (and the Critiques du Mythe full-screen effect if that module is active), without rolling a single die.",
+  "CTC.test.titre": "Test a consequence",
+  "CTC.test.famille": "Skill",
+  "CTC.test.kind": "Result",
+  "CTC.test.effet": "Also the full-screen effect (Critiques du Mythe)",
+  "CTC.test.go": "Draw"
 }

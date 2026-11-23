@@ -17,6 +17,13 @@ Hooks.once('init', () => {
     name: 'CTC.settings.auto.name', hint: 'CTC.settings.auto.hint',
     scope: 'world', config: true, type: Boolean, default: false
   })
+  class MenuTest extends foundry.applications.api.ApplicationV2 {
+    async render () { tester(); return this }   // pas de fenêtre propre : ouvre directement la fenêtre d'essai
+  }
+  game.settings.registerMenu(ID, 'test', {
+    name: 'CTC.settings.test.name', label: 'CTC.settings.test.label', hint: 'CTC.settings.test.hint',
+    icon: 'fa-solid fa-dice', type: MenuTest, restricted: true
+  })
   game.settings.register(ID, 'visibilite', {
     name: 'CTC.settings.visibilite.name', hint: 'CTC.settings.visibilite.hint',
     scope: 'world', config: true, type: String, default: 'public',
@@ -87,7 +94,7 @@ async function creerTablesManquantes () {
 }
 
 Hooks.once('ready', async () => {
-  game.modules.get(ID).api = { tirer, creerTablesManquantes, familles: TOUTES.map((f) => f.cle) }
+  game.modules.get(ID).api = { tirer, tester, creerTablesManquantes, familles: TOUTES.map((f) => f.cle) }
   for (const m of game.messages) if (m.flags?.CoC7) vus.set(m.id, compte(m))   // jets déjà dans le chat : pas de tirage automatique rétroactif
   if (!game.user.isGM || game.users.activeGM?.id !== game.user.id) return
   try {
@@ -119,16 +126,42 @@ function carte ({ famille, kind, texte, acteur }) {
   </div>`
 }
 
-async function consequence (message, kind) {
-  const famille = familleDe(texteCompetence(message))
+async function poster (famille, kind, acteur = '') {
   const texte = await tirer(famille, kind)
-  const acteur = message.speaker?.alias ?? ''
   await ChatMessage.create({
     content: carte({ famille, kind, texte, acteur }),
     speaker: { alias: t('speaker') },
     whisper: get('visibilite') === 'mj' ? ChatMessage.getWhisperRecipients('GM').map((u) => u.id) : [],
     flags: { [ID]: { cle: famille.cle, kind, acteur } }
   })
+}
+
+async function consequence (message, kind) {
+  await poster(familleDe(texteCompetence(message)), kind, message.speaker?.alias ?? '')
+}
+
+/** Essai sans faire de jet : fenêtre de choix (famille, type), carte de conséquence et, si le module est là, effet plein écran de Critiques du Mythe. */
+async function tester (cle, kind) {
+  if (cle && kind) {
+    const famille = TOUTES.find((f) => f.cle === cle) ?? GENERIQUE
+    return poster(famille, kind, game.user.character?.name ?? '')
+  }
+  const effet = game.modules.get('critiques-du-mythe')?.active && game.modules.get('critiques-du-mythe').api?.tester
+  const options = TOUTES.map((f) => `<option value="${f.cle}">${esc(f.nom)}</option>`).join('')
+  const content = `<div class="ctc-test">
+    <div class="form-group"><label>${t('test.famille')}</label><select name="famille">${options}</select></div>
+    <div class="form-group"><label>${t('test.kind')}</label><select name="kind"><option value="critique">${t('titre.critique')}</option><option value="maladresse">${t('titre.maladresse')}</option></select></div>
+    ${effet ? `<div class="form-group"><label>${t('test.effet')}</label><input type="checkbox" name="effet" checked></div>` : ''}
+  </div>`
+  const r = await foundry.applications.api.DialogV2.prompt({
+    window: { title: t('test.titre'), icon: 'fa-solid fa-dice' },
+    content,
+    ok: { label: t('test.go'), icon: 'fa-solid fa-dice', callback: (ev, button) => ({ famille: button.form.elements.famille.value, kind: button.form.elements.kind.value, effet: !!button.form.elements.effet?.checked }) },
+    rejectClose: false
+  })
+  if (!r) return
+  await poster(TOUTES.find((f) => f.cle === r.famille) ?? GENERIQUE, r.kind, game.user.character?.name ?? '')
+  if (r.effet && effet) { try { game.modules.get('critiques-du-mythe').api.tester(r.kind === 'critique' ? 'critical' : 'fumble') } catch (e) { console.error(ID, e) } }
 }
 
 /* Bouton sur la carte du jet (Gardien seulement) et bouton « Retirer » sur la carte de conséquence. */

@@ -5,3 +5,4 @@
 - Association compétence → famille : nom de l'objet compétence retrouvé via `flags.CoC7.load` si possible, sinon intitulé du jet (flavor), puis expressions régulières sur le nom sans accents.
 - **Non testé dans Foundry.** Points incertains : clés exactes de `flags.CoC7.load` (skillId…), format des résultats de RollTable en v14 (`name`), hook `renderChatMessageHTML` sur les cartes CoC7, affichage du bouton si la carte est re-rendue.
 - À faire : version moderne des textes (2026) à part, import/export des tables, test avec un vrai 01 et une vraie maladresse.
+- Fenêtre d'essai sans jet : bouton dans les réglages du module (menu), `api.tester()` pour une macro, `api.tester(cle, kind)` pour tirer directement ; déclenche aussi l'effet de Critiques du Mythe s'il est actif.

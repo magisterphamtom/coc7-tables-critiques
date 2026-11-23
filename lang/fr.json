@@ -13,5 +13,13 @@
   "CTC.speaker": "Conséquence",
   "CTC.tablesCreees": "{n} tables de conséquences créées dans le dossier « Critiques et maladresses ».",
   "CTC.err.tables": "Impossible de créer les tables de conséquences (voir la console F12).",
-  "CTC.err.tirage": "Tirage impossible (voir la console F12)."
+  "CTC.err.tirage": "Tirage impossible (voir la console F12).",
+  "CTC.settings.test.name": "Tester sans faire de jet",
+  "CTC.settings.test.label": "Ouvrir la fenêtre d'essai",
+  "CTC.settings.test.hint": "Choisis une compétence et un type de résultat : la carte de conséquence s'affiche dans le chat (et l'effet plein écran de Critiques du Mythe si le module est actif), sans lancer un seul dé.",
+  "CTC.test.titre": "Tester une conséquence",
+  "CTC.test.famille": "Compétence",
+  "CTC.test.kind": "Résultat",
+  "CTC.test.effet": "Aussi l'effet plein écran (Critiques du Mythe)",
+  "CTC.test.go": "Tirer"
 }

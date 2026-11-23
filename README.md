@@ -7,6 +7,13 @@ Une **table de conséquences par compétence** pour Call of Cthulhu 7e (système
 - Un clic tire dans la table de la compétence et affiche une carte de conséquence dans le chat, aux couleurs du thème choisi dans « CoC7 – Cartes de chat thématiques ». Le bouton **« Retirer »** (Gardien) change le résultat.
 - Réglages (Configurer les paramètres → Modules) : **tirage automatique** (à chaque critique ou maladresse, sans bouton) et **qui voit la conséquence** (tout le monde, ou le Gardien seul pour préparer la narration).
 
+## Tester sans faire de jet
+Dans **Configurer les paramètres → Modules → CoC7 Tables de critiques**, le bouton **« Ouvrir la fenêtre d'essai »** laisse choisir une compétence et un type de résultat : la carte de conséquence s'affiche dans le chat, et l'effet plein écran de *Critiques du Mythe* se déclenche aussi si ce module est actif. Pour l'avoir sous la main, crée une macro (type Script) avec :
+```js
+game.modules.get("coc7-tables-critiques").api.tester()
+```
+Pour tirer directement, sans fenêtre : `api.tester("conduite", "maladresse")` (clés : conduite, discretion, psychologie, bibliotheque, armes_feu, combat, social, perception, medecine, savoir, physique, generique).
+
 ## Les tables
 Au premier lancement, le module crée dans le monde le dossier **« Critiques et maladresses »** avec 24 tables Foundry (12 familles × réussite critique / maladresse, 8 résultats chacune). Ce sont de vraies tables : modifie, ajoute ou retire des lignes comme tu veux, le module utilise toujours tes versions. Si tu supprimes une table, le module retombe sur son texte d'origine.
 
