@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/banner.png" alt="CoC7 Tables de critiques" width="100%"></p>
+
 # CoC7 Tables de critiques
 
 Une **table de conséquences par compétence** pour Call of Cthulhu 7e (système CoC7). Quand un jet est une **réussite critique** ou une **maladresse**, le Gardien tire une conséquence adaptée à la compétence jouée : un pneu crevé en Conduite, une note en marge en Bibliothèque, une arme qui s'enraye en Armes à feu…
